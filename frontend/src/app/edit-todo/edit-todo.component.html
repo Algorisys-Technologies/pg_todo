@@ -1,0 +1,20 @@
+<div class="container">
+    <h1 class="text-center text-danger" style="font-family: 'Times New Roman', Times, serif">
+        Edit todo
+    </h1>
+    <span class="text-success">{{message}}</span>
+    <form [formGroup]="edittodoForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <table class="table table-bordered table-light">
+                <tr>
+                    <td>todo</td>
+                    <td class="d-flex flex-column"><input type="text" placeholder="Enter todo" formControlName="todo">
+                        <span *ngIf="todo?.invalid && todo?.touched" class="text-danger">Please enter todo</span>
+                    </td>
+                </tr>
+            </table>
+            <button class="btn btn-outline-success ngSubmit m-2" type="submit"
+                [disabled]="edittodoForm?.invalid">Update</button>
+        </div>
+    </form>
+</div>

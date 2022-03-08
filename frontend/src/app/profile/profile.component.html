@@ -1,0 +1,50 @@
+<!-- example for @input and @output  -->
+
+<!-- <p class="text-primary">Project name: {{titleName}}</p>
+
+    <label for="item-input">Add an item:</label>
+    <input type="text" id="item-input" #newItem>
+    <button (click)="addNewItem(newItem.value)">Add to parent's list</button>
+    <hr>
+
+    <div>
+        <button (click)="dec()" title="smaller">
+            -
+        </button>
+        <button (click)="inc()" title="smaller">
+            +
+        </button>
+        <label for="size" [style.font-size.px]="size">FontSize: {{size}}px</label>
+    </div>
+    <hr> -->
+
+<div class="container card-body text-center alert alert-danger my-5" *ngIf="currentUser; else loggedOut">
+    <header>
+        <h3>
+             Profile: {{ currentUser.name}}
+        </h3>
+    </header>
+    <p>
+        <strong>Token:</strong>
+        {{ currentUser.accessToken.substring(0, 20) }} ...
+        {{ currentUser.accessToken.substring(currentUser.accessToken.length - 20) }}
+    </p>
+    <p>
+        <strong>Email:</strong>
+        {{ currentUser.email }}
+    </p>
+    <p>
+        <strong>College name:</strong>
+        {{ currentUser.collegename}}
+    </p>
+    <button class="btn btn-outline-primary" routerLink="/showTodo">showTodo</button>
+</div>
+
+<ng-template #loggedOut>
+    <h1 class="alert alert-danger text-center my-5"> Please login.</h1>
+</ng-template>
+
+
+
+ <!-- <ng-content select="[question]"></ng-content> 
+<ng-content></ng-content>  -->

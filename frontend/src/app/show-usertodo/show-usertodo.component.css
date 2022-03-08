@@ -1,0 +1,16 @@
+.container input[type=text] {
+    float: right;
+    margin-top: 30px;
+    margin-right: 16px;
+    padding:6px ;
+    font-size: 17px;
+  }
+
+/* .text-center{
+    color: red;
+    content: "**";
+} */
+
+td,tr{
+  cursor:all-scroll;
+}

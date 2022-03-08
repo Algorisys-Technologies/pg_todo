@@ -1,0 +1,21 @@
+<div class="container">
+    <h3 class="text-warning text-center">Todo List</h3>
+    <button type="button" class="btn btn-outline-primary" routerLink="/create">Create</button>
+    <table class="table table-bordered table-light">
+        <thead>
+            <tr>
+                <th>todo</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of todoList">
+                <td> {{todo.todo}} </td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger" (click)="removeTodo(todo.id)">Delete</button>
+                    <button type="button" class="btn btn-outline-info" (click)="updateTodo(todo.id)">Edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

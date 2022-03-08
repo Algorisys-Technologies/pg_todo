@@ -1,0 +1,68 @@
+<!-- example of input and ng-content -->
+<!-- <app-profile [titleName]="title">
+    <p question>Is content projection really cool?</p>
+    <p>question cool.</p>
+</app-profile> -->
+
+<div class="container alert alert-danger text-center">
+    <app-ad-banner></app-ad-banner>
+</div>
+
+<div class="container">
+    <button type="button" class="btn btn-outline-primary" routerLink="/create">Add Todo</button>
+    <button type="button" class="btn btn-outline-warning m-5" (click)="logout()">Logout</button>
+    <button class="btn btn-outline-primary " routerLink="/profile">User profile</button>
+    <input type="text" placeholder="Search..." class="rounded" (keyup)="search($event)">
+</div>
+<div class="container" *ngIf="notSearch; else searchBox">
+    <h3 class="text-warning text-center">Todo List</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th *ngFor="let header of tableHeader">{{header.value}}</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let todo of paginationList" draggable="true" (dragstart)="start($event)"
+                (dragover)="dragover($event)">
+                <td *ngFor="let header of tableHeader" appTdhighlight> {{todo[header.key]}} </td>
+                <td><button type="button" class="btn btn-outline-danger m-1"
+                        (click)="removeTodo(todo.id)">Delete</button>
+                    <button type="button" class="btn btn-outline-info" (click)="updateTodo(todo.id)">Edit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-center">
+        <span style="margin: 10px;border: lightgreen;border-style: outset;cursor: pointer;"
+            *ngFor="let in of pageCountArray ;let i = index" (click)="pagination(i)">{{i+1}}</span>
+    </div>
+</div>
+
+<ng-template #searchBox>
+    <div class="container">
+        <h3 class="text-warning text-center">Todo Search List</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th *ngFor="let header of tableHeader">{{header.value}}</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let todo of todoFind" draggable="true" (dragstart)="start($event)"
+                    (dragover)="dragover($event)">
+                    <td *ngFor="let header of tableHeader" innerHtml="{{todo[header.key] | searchHighlight:word}}">
+                        {{todo[header.key]}} </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-danger m-1"
+                            (click)="removeTodo(todo.id)">Delete</button>
+                        <button type="button" class="btn btn-outline-info" (click)="updateTodo(todo.id)">
+                            Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-template>
